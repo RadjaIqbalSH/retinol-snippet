@@ -6,12 +6,12 @@ function activate(context) {
 
     let disposable = vscode.languages.registerCompletionItemProvider({ language: '*', scheme: 'file' }, {
         provideCompletionItems(document, position) {
-					const currentPosition = document.lineAt(position).text
+		    const currentPosition = document.lineAt(position).text
             if (currentPosition.trim().includes("var()")) {
-								return suggestion.map((suggestion) => ({
-									...suggestion,
-									kind: vscode.CompletionItemKind.Variable,
-								}));
+                return suggestion.map((suggestion) => ({
+                    ...suggestion,
+                    kind: vscode.CompletionItemKind.Variable,
+                }));
             }
             return [];
         }
